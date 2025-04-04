@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Easily generate and customize stunning CSS gradients with our Gradient Picker! Explore beautiful color combinations, copy CSS code, and enhance your web designs effortlessly.">
+    <meta name="keywords" content="gradient picker, CSS gradients, gradient generator, color gradients, gradient design, CSS gradient tool, hex to gradient, UI gradients, web design, color palette, gradient editor">
+    <meta name="author" content="Sai Nithin Muthyam">
+    <title>Gradient Picker</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height:90vh;
+            text-align: center;
+            color:rgb(0, 0, 0);
+            background:linear-gradient(to right , #5accf1, #ee95bb );
+            text-align: center;
+            place-items: center;
+            
+            /* linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+        }
+        button{
+            width:150px;
+            height:30px;
+            font-weight: bold;
+            /* background-color: greenyellow; */
+            margin-bottom: 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        button:active{
+            color:red;
+        }
+        .btn{
+            display: flex;
+            gap:100px;
+            justify-content: center;
+        }
+        #button, #button3{
+            background-color: #000;
+        }
+        #button2, #button4{
+            background-color:#444;
+        }
+        h4{
+            height:40px;;
+            border:2px solid black;
+            width:600px;
+            align-content: center;
+            background-color: #e5feff98;
+            border-left: 15px solid black;
+            cursor: pointer;
+            font-size: 17px;
+            color:black;
+            border-end-end-radius: 20px;
+            border-start-start-radius: 20px;
+            }
+            h1{
+                display: flex;
+                justify-content: flex-start;
+                height: 20vh;
+            }
+            @media only screen and  (max-width:480px) {
+                body{
+                    width:90vw;
+                    height:90vh;
+                }
+                button{
+                    width:100px;
+                }
+                h4{
+                    width:300px;
+                }
+            }
+    </style>
+</head>
+<body>
+    <h1>GRADIENT PICKER</h1>
+    <h3>For gradient right</h3>
+    <div class="btn">
+        <button id="button">#0000</button>
+        <button id="button2">#ffff</button>
+    </div>
+   
+        
+        <h4 id="copyCode">background:linear-gradient(to right , #5accf1, #ee95bb );</h4>
+    <h3>For gradient bottom</h3>
+        <div class="btn">
+            <button id="button3">#0000</button>
+            <button id="button4">#ffff</button>
+        </div>
+        <h4 id="copyCode2">background:linear-gradient(to right , #5accf1, #ee95bb );</h4>
+        <script>
+       let btn2=document.getElementById('button2');
+       let btn1=document.getElementById('button');
+       let btn3=document.getElementById('button3');
+       let btn4=document.getElementById('button4');
+       let cd = document.getElementById('copyCode');
+       let cd2 = document.getElementById('copyCode2');
+
+       let rgb1 = "#000";
+       let rgb2 = "#fff";
+       let rgb3= "#444";
+       let rgb4 ="#555";
+       let hexValues = () =>{
+        let  hexValue = "0123456789abcdef"
+        let hash = "#"  ;
+            for(i=0;i<6;i++){
+                hash = hash +  hexValue[Math.floor(Math.random()*16)];
+            }
+            return hash;
+       }
+        const  handleBtn1 = () => {
+        rgb1= hexValues();
+        console.log(rgb1);
+        document.body.style.backgroundImage = `linear-gradient(to right , ${rgb1}, ${rgb2})`;
+        cd.innerText=`background:linear-gradient(to right , ${rgb1}, ${rgb2} )`;
+        // cd2.innerText=`background-color:linear-gradient(to bottom , ${rgb1}, ${rgb2} )`;
+        btn1.style.backgroundColor = rgb1;
+        btn1.innerText=`${rgb1}`;
+        };
+        const  handleBtn2 = () => {
+        rgb2= hexValues();
+        console.log(rgb2);
+        document.body.style.backgroundImage = `linear-gradient(to right , ${rgb1}, ${rgb2})`;
+        cd.innerText=`background:linear-gradient(to right , ${rgb1}, ${rgb2} )`;
+        // cd2.innerText=`background-color:linear-gradient(to bottom , ${rgb1}, ${rgb2} )`;
+        btn2.style.backgroundColor = rgb2;
+        btn2.innerText=`${rgb2}`;
+        };
+        const handleBtn3 = () =>{
+            rgb3= hexValues();
+            console.log(rgb3);
+            document.body.style.backgroundImage =`linear-gradient(to bottom , ${rgb3}, ${rgb4} )`;
+            cd2.innerText = `background:linear-gradient(to bottom , ${rgb3}, ${rgb4})`;
+            btn3.innerText = `${rgb3}`;
+            btn4.style.backgroundColor =`${rgb3}`;
+
+        };     
+        const handleBtn4 = () =>{
+            rgb4= hexValues();
+            console.log(rgb4);
+            document.body.style.backgroundImage =`linear-gradient(to bottom , ${rgb3}, ${rgb4} )`;
+            cd2.innerText = `background:linear-gradient(to bottom , ${rgb3}, ${rgb4} )`;
+            btn4.innerText = `${rgb4}`;
+            btn4.style.backgroundColor =`${rgb4}`;
+        };
+
+        btn1.addEventListener("click", handleBtn1); 
+        btn2.addEventListener("click", handleBtn2); 
+        btn3.addEventListener("click", handleBtn3);
+        btn4.addEventListener("click", handleBtn4);
+        cd.addEventListener("click", () => {
+            navigator.clipboard.writeText(cd.innerText);
+            alert("copied Text : " + cd.innerText )
+        });
+        cd2.addEventListener("click", () => {
+            navigator.clipboard.writeText(cd2.innerText);
+            alert("Text Copied : " + cd2.innerText )
+        });
+     </script>
+</body>
+</html>
